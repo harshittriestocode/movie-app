@@ -15,7 +15,7 @@ app.get('/list/active', async (req, res) => {
     const collection = client.db(dbName).collection(collectionName);
     const response = await collection.find({ status: { "$eq": "active" } }).toArray();
     return res.send(JSON.stringify(response));
-})
+});
 
 app.get('/list/inactive', async (req, res) => {
     const collection = client.db(dbName).collection(collectionName);
@@ -86,7 +86,7 @@ app.delete('/delete/:movieName', async (req, res) => {
     const response = await collection.deleteOne({ name: movieName });
 
     return res.json(response.result);
-})
+});
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`)
